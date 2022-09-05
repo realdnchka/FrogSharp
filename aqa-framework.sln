@@ -1,6 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test_example1", "test_example1\test_example1.csproj", "{D689D86B-4172-453C-B933-0679E44A0870}"
+# Visual Studio Version 16
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "aqa-framework", "test_example1\aqa-framework.csproj", "{D689D86B-4172-453C-B933-0679E44A0870}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

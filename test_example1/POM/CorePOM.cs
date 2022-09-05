@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace test_example1.POM
+namespace aqaframework.POM
 {
     public abstract class CorePOM
     {
