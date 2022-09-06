@@ -9,6 +9,7 @@ namespace aqaframework.POM
         public MainPagePOM(WebDriver driver) : base(driver)
         {
             this.driver = driver;
+            headerPOM = new HeaderPOM(driver);
         }
     }
 }

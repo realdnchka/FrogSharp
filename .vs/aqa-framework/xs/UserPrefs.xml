@@ -6,25 +6,19 @@
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.aqa-framework PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="test_example1/Tests/CoreTest.cs">
     <Files>
-      <File FileName="test_example1/Helpers/UserRegistration.cs" Line="19" Column="38" />
-      <File FileName="test_example1/POM/CorePOM.cs" Line="6" Column="27" />
-      <File FileName="test_example1/Tests/CoreTest.cs" Line="11" Column="15" />
-      <File FileName="test_example1/Tests/UnitTest1.cs" Line="33" Column="31" />
-      <File FileName="test_example1/POM/MainPagePOM.cs" Line="7" Column="6" />
-      <File FileName="test_example1/POM/RegistrationPOM.cs" Line="15" Column="9" />
-      <File FileName="test_example1/POM/MainPagePOM.cs" Line="8" Column="16" />
-      <File FileName="test_example1/Configuration.cs" Line="28" Column="10" />
+      <File FileName="test_example1/Configuration.cs" Line="19" Column="86" />
+      <File FileName="test_example1/Tests/RegistrationTest.cs" Line="51" Column="50" />
+      <File FileName="test_example1/Helpers/UserRegistration.cs" Line="64" Column="44" />
+      <File FileName="test_example1/Tests/CoreTest.cs" Line="23" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="aqa-framework" expanded="True">
             <Node name="aqa-framework" expanded="True">
-              <Node name="Dependencies" expanded="True">
-                <Node name="PackageDependencies" expanded="True" />
-              </Node>
+              <Node name="Dependencies" expanded="True" />
               <Node name="Helpers" expanded="True" />
               <Node name="POM" expanded="True" />
               <Node name="Tests" expanded="True" />
@@ -37,7 +31,13 @@
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="aqa-framework" expanded="True" selected="True" />
+          <Node name="aqa-framework" expanded="True">
+            <Node name="aqa-framework" expanded="True">
+              <Node name="aqaframework.Tests" expanded="True">
+                <Node name="Tests" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>

@@ -1,4 +1,5 @@
 ﻿using System;
+using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 
@@ -6,12 +7,15 @@ namespace aqaframework
 {
     public class Configuration
     {
-        public string url = "https://www.onliner.by/";
-        public string apiProfileUrl = "https://profile.onliner.by/sdapi/user.api/";
+        public string url = TestContext.Parameters["url"];
+        public string apiProfileUrl = TestContext.Parameters["apiProfileUrl"];
+        
         //private Browser browser = Browser.Chrome;
         public WebDriver driver;
 
         // Implementing Singleton pattern
+        private static Configuration instance = null;
+        private static Object syncRoot = new();
         private Configuration() {
             driver = new ChromeDriver();
             var options = new ChromeOptions();
@@ -19,15 +23,19 @@ namespace aqaframework
             driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(30));
         }
 
-        private static Configuration instance = null;
-
         public static Configuration Instance
         {
             get
             {
                 if (instance == null)
                 {
-                    instance = new Configuration();
+                    lock (syncRoot)
+                    {
+                        if (instance == null)
+                        {
+                            instance = new Configuration();
+                        }
+                    }
                 }
                 return instance;
             }

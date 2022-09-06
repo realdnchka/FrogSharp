@@ -34,7 +34,7 @@ namespace aqaframework.Helpers
 
     public class WebUserRegistration: IUserRegistration
     {
-        private RegistrationPOM registrationPOM;
+        public RegistrationPOM registrationPOM = new(Configuration.Instance.driver);
         public void UserRegistration(string email, string password)
         {
             registrationPOM.textEmailInput(email)

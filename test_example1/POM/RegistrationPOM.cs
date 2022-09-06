@@ -23,6 +23,8 @@ namespace aqaframework.POM
 
         private By buttonRegistration = By.XPath("//button[@type='submit']");
 
+        private By textConfirmEmail = By.XPath("//nobr[contains(text(), 'e-mail')]");
+        
         #endregion
 
         #region methods
@@ -34,13 +36,13 @@ namespace aqaframework.POM
 
         public RegistrationPOM textPasswordInput(string password)
         {
-            SetText(textEmail, password);
+            SetText(textPassword, password);
             return this;
         }
 
         public RegistrationPOM textRepeatPasswordInput(string password)
         {
-            SetText(textEmail, password);
+            SetText(textRepeatPassword, password);
             return this;
         }
 
@@ -48,6 +50,11 @@ namespace aqaframework.POM
         {
             Click(checkboxAcceptRules);
             return this;
+        }
+
+        public bool textConfirmEmailExist()
+        {
+            return IsElementExist(textConfirmEmail);
         }
 
         public void buttonRegistrationClick()

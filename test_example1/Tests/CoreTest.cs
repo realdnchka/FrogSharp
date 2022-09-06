@@ -20,15 +20,24 @@ namespace aqaframework.Tests
         {
             driver.Navigate().GoToUrl(url);
         }
-        
+
+        protected void OpenUrl(string url)
+        {
+            driver.Navigate().GoToUrl(url);
+        }
+
+        protected string GetUrl()
+        {
+            return driver.Url;
+        }
         [SetUp]
         public virtual void SetUp()
         {
             //OpenSite();
         }
         
-        [TearDown]
-        public void TearDown()
+        [OneTimeTearDown]
+        public void OneTimeTearDown()
         {
             driver.Quit();
         }
