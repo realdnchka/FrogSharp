@@ -1,3 +1,4 @@
+using aqaframework.Drivers;
 using OpenQA.Selenium;
 using NUnit.Framework;
 
@@ -7,13 +8,15 @@ namespace aqaframework.Tests
     public abstract class CoreTest
     {
         private Configuration config = Configuration.Instance;
+        private DriverManager driverManager;
         public WebDriver driver;
         private string url;
 
         protected CoreTest()
         {
-            this.driver = config.driver;
-            this.url = config.url;
+            driverManager = config.driverManager;
+            driver = driverManager.getDriver();
+            url = config.url;
         }
 
         protected void OpenSite()
@@ -25,7 +28,6 @@ namespace aqaframework.Tests
         {
             driver.Navigate().GoToUrl(url);
         }
-
         protected string GetUrl()
         {
             return driver.Url;
@@ -33,13 +35,13 @@ namespace aqaframework.Tests
         [SetUp]
         public virtual void SetUp()
         {
-            //OpenSite();
+            OpenSite();
         }
         
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            driver.Quit();
+            driverManager.quitDriver();
         }
     }
 }

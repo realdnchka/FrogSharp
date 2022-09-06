@@ -1,26 +1,32 @@
 ﻿using System;
+using aqaframework.Drivers;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 
-namespace aqaframework
-{
-    public class Configuration
+namespace aqaframework;
+public class Configuration
     {
         public string url = TestContext.Parameters["url"];
         public string apiProfileUrl = TestContext.Parameters["apiProfileUrl"];
-        
-        //private Browser browser = Browser.Chrome;
-        public WebDriver driver;
+        public DriverManager driverManager;
 
         // Implementing Singleton pattern
         private static Configuration instance = null;
         private static Object syncRoot = new();
-        private Configuration() {
-            driver = new ChromeDriver();
-            var options = new ChromeOptions();
-            options.AddArgument("no-sandbox");
-            driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(30));
+
+        private Configuration()
+        {
+            bool isTryParseOk = Enum.TryParse<BrowserType>(TestContext.Parameters["browser"], true, out var browserType);
+            if (isTryParseOk)
+            {
+                driverManager = DriverManagerFactory.getDriverManager(browserType);
+            }
+            else
+            {
+                throw new Exception($"Incorrect browser found in config");
+            }
+
         }
 
         public static Configuration Instance
@@ -41,13 +47,4 @@ namespace aqaframework
             }
         }
     }
-
-    public enum Browser
-    {
-        Chrome,
-        Firefox,
-        InternetExplorer,
-        Safari
-    }
-}
 

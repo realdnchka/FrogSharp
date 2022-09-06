@@ -18,7 +18,7 @@ namespace aqaframework.Tests
         [Parallelizable]
         public void RegistrationWeb()
         {
-            OpenSite();
+            // OpenSite();
             //Arrange
             string email = new RandomString(10).result + "@dot.com";
             string passwd = new RandomString(8).result;
