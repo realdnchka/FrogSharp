@@ -4,11 +4,11 @@ namespace aqaframework.Drivers;
 
 public class FirefoxDriverManager: DriverManager
 {
-    public override void createDriver()
+    protected override void CreateDriver()
     {
         driver = new FirefoxDriver();
         var options = new FirefoxOptions();
         options.AddArgument("no-sandbox");
-        base.createDriver();
+        base.CreateDriver();
     }
 }

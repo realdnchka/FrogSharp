@@ -1,4 +1,6 @@
 ﻿using System;
+using aqaframework.DataObjects;
+using aqaframework.Drivers;
 using RestSharp;
 using aqaframework.POM;
 using Newtonsoft.Json;
@@ -21,25 +23,30 @@ namespace aqaframework.Helpers
             this.strategy = strategy;
         }
 
-        public void Registration(string email, string password)
+        public void Registration(User user)
         {
-            this.strategy.UserRegistration(email, password);
+            strategy.UserRegistration(user);
         }
     }
 
     public interface IUserRegistration
     {
-        void UserRegistration(string email, string password);
+        void UserRegistration(User user);
     }
 
     public class WebUserRegistration: IUserRegistration
     {
-        public RegistrationPOM registrationPOM = new(Configuration.Instance.driverManager.getDriver());
-        public void UserRegistration(string email, string password)
+        public RegistrationPOM registrationPOM;
+        public WebUserRegistration(DriverManager driverManager)
         {
-            registrationPOM.textEmailInput(email)
-                .textPasswordInput(password)
-                .textRepeatPasswordInput(password)
+            registrationPOM = new(driverManager);
+        }
+    
+        public void UserRegistration(User user)
+        {
+            registrationPOM.textEmailInput(user.email)
+                .textPasswordInput(user.password)
+                .textRepeatPasswordInput(user.password)
                 .checkboxAcceptRulesClick()
                 .buttonRegistrationClick();
         }
@@ -48,7 +55,7 @@ namespace aqaframework.Helpers
     public class APIUserRegistration : IUserRegistration
     {
         public int statusCode;
-        public void UserRegistration(string email, string password)
+        public void UserRegistration(User user)
         {
             ApiHelper apiHelper = new ApiHelper();
             RestClient client = apiHelper.client;
@@ -56,9 +63,9 @@ namespace aqaframework.Helpers
 
             var userCreds = new
             {
-                email = email,
-                password = password,
-                repeat_password = password
+                email = user.email,
+                password = user.password,
+                repeat_password = user.password
             };
             request.RequestFormat = DataFormat.Json;
             request.AddJsonBody(userCreds);

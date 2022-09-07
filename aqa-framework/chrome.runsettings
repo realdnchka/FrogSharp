@@ -5,4 +5,7 @@
         <Parameter name="apiProfileUrl" value="https://profile.onliner.by/sdapi/user.api/" />
         <Parameter name="browser" value="Chrome" />
     </TestRunParameters>
+    <RunConfiguration>
+        <MaxCpuCount>1</MaxCpuCount>
+    </RunConfiguration>
 </RunSettings>

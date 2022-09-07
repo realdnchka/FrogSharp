@@ -1,47 +1,34 @@
 using aqaframework.Drivers;
-using OpenQA.Selenium;
 using NUnit.Framework;
 
 namespace aqaframework.Tests
 {
     [TestFixture]
-    public abstract class CoreTest
+    public class CoreTest
     {
-        private Configuration config = Configuration.Instance;
-        private DriverManager driverManager;
-        public WebDriver driver;
-        private string url;
+        protected DriverManager driverManager;
 
-        protected CoreTest()
+        protected DriverManager InitDriverManager()
         {
-            driverManager = config.driverManager;
-            driver = driverManager.getDriver();
-            url = config.url;
-        }
-
-        protected void OpenSite()
-        {
-            driver.Navigate().GoToUrl(url);
-        }
-
-        protected void OpenUrl(string url)
-        {
-            driver.Navigate().GoToUrl(url);
-        }
-        protected string GetUrl()
-        {
-            return driver.Url;
-        }
-        [SetUp]
-        public virtual void SetUp()
-        {
-            OpenSite();
+            return DriverManagerFactory.Instance.GetDriverManager(Configuration.Instance.browserType);
         }
         
+        [SetUp]
+        public void SetUp()
+        {
+            driverManager = InitDriverManager();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            // driverManager.CloseDriver();
+        }
+
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            driverManager.quitDriver();
+            DriverManagerFactory.Instance.CloseAllDrivers();
         }
     }
 }

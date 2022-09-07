@@ -1,4 +1,4 @@
-﻿using System;
+﻿using aqaframework.Drivers;
 using OpenQA.Selenium;
 
 namespace aqaframework.POM
@@ -7,10 +7,7 @@ namespace aqaframework.POM
     {
         private WebDriver driver;
 
-        public RegistrationPOM(WebDriver driver) : base(driver)
-        {
-            this.driver = driver;
-        }
+        public RegistrationPOM(DriverManager driverManager) : base(driverManager) { }
 
         #region selectors
         private By textEmail = By.XPath("//input[@type='email']");

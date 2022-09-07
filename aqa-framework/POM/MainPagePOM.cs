@@ -1,15 +1,13 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using aqaframework.Drivers;
 
 namespace aqaframework.POM
 {
     public class MainPagePOM : CorePOM
     {
         public HeaderPOM headerPOM;
-        public MainPagePOM(WebDriver driver) : base(driver)
+        public MainPagePOM(DriverManager driverManager) : base(driverManager)
         {
-            this.driver = driver;
-            headerPOM = new HeaderPOM(driver);
+            headerPOM = new HeaderPOM(driverManager);
         }
     }
 }

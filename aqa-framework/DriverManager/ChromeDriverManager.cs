@@ -1,10 +1,11 @@
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace aqaframework.Drivers;
 
 public class ChromeDriverManager: DriverManager
 {
-    public override void createDriver()
+    protected override void CreateDriver()
     {
         driver = new ChromeDriver();
         var options = new ChromeOptions();

@@ -1,34 +1,60 @@
-using System;
-using System.Collections.Generic;
+using aqaframework.DataObjects;
+using aqaframework.Drivers;
 using NUnit.Framework;
 using aqaframework.Helpers;
 using aqaframework.POM;
-using OpenQA.Selenium;
 
 namespace aqaframework.Tests
 {
     [TestFixture]
-    public class Tests: CoreTest
+    public class RegistrationTest: CoreTest
     {
-        MainPagePOM mainPagePOM;
-        SignInPagePOM signInPagePOM;
         UserRegistration userRegistration = new();
         
-        [Test]
+        [Test] 
         [Parallelizable]
         public void RegistrationWeb()
         {
-            // OpenSite();
             //Arrange
-            string email = new RandomString(10).result + "@dot.com";
-            string passwd = new RandomString(8).result;
-            WebUserRegistration webReg = new();
+            MainPagePOM mainPagePOM = new(driverManager);
+            SignInPagePOM signInPagePOM = new(driverManager);
+            WebUserRegistration webReg = new(driverManager);
+            User user = new RandomUser();
+            
             //Act
+            driverManager.GetDriver();
+            driverManager.OpenSite();
             mainPagePOM.headerPOM.buttonSignInClick();
             signInPagePOM.linkRegistrtionClick();
 
             userRegistration.SetStrategy(webReg);
-            userRegistration.Registration(email, passwd);
+            userRegistration.Registration(user);
+
+            //Actual
+            bool succesReg = webReg.registrationPOM.textConfirmEmailExist();
+            
+            //Assert
+            Assert.IsTrue(succesReg);
+        }
+        
+        [Test]
+        [Parallelizable]
+        public void RegistrationWeb2()
+        {
+            //Arrange
+            MainPagePOM mainPagePOM = new(driverManager);
+            SignInPagePOM signInPagePOM = new(driverManager);
+            WebUserRegistration webReg = new(driverManager);
+            User user = new RandomUser();
+            
+            //Act
+            driverManager.GetDriver();
+            driverManager.OpenSite();
+            mainPagePOM.headerPOM.buttonSignInClick();
+            signInPagePOM.linkRegistrtionClick();
+
+            userRegistration.SetStrategy(webReg);
+            userRegistration.Registration(user);
 
             //Actual
             bool succesReg = webReg.registrationPOM.textConfirmEmailExist();
@@ -42,27 +68,18 @@ namespace aqaframework.Tests
         public void RegistrationApi()
         {
             //Arrange
-            string email = new RandomString(10).result + "@dot.com";
-            string passwd = new RandomString(8).result;
+            User user = new RandomUser();
             APIUserRegistration apiReg = new APIUserRegistration();
             
             //Act
             userRegistration.SetStrategy(apiReg);
-            userRegistration.Registration(email, passwd);
+            userRegistration.Registration(user);
             
             //Actual
             int curStatusCode = apiReg.statusCode;
             
             //Assert
             Assert.IsTrue(curStatusCode == 201);
-        }
-
-        [SetUp]
-        public override void SetUp()
-        {
-            base.SetUp();
-            mainPagePOM = new MainPagePOM(driver);
-            signInPagePOM = new SignInPagePOM(driver);
         }
     }
 }

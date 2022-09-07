@@ -4,26 +4,39 @@ namespace aqaframework.Drivers;
 
 public abstract class DriverManager
 {
-    //TODO From config file and using multiple drivers each test
     protected WebDriver driver;
 
-    public virtual void createDriver() { }
-    
-    public void quitDriver()
+    protected virtual void CreateDriver() { }
+
+    public WebDriver GetDriver()
+    {
+        if (driver == null)
+        {
+            CreateDriver();
+        }
+        return driver;
+    }
+
+    public void OpenUrl(string url)
+    {
+        driver.Navigate().GoToUrl(url);
+    }
+
+    public void OpenSite()
+    {
+        OpenUrl(Configuration.Instance.url);
+    }
+
+    public string GetUrl()
+    {
+        return driver.Url;
+    }
+
+    public void CloseDriver()
     {
         if (driver != null)
         {
             driver.Quit();
-            driver = null;
         }
-    }
-
-    public WebDriver getDriver()
-    {
-        if (driver == null)
-        {
-            createDriver();
-        }
-        return driver;
     }
 }

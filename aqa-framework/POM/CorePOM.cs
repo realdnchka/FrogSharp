@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using aqaframework.Drivers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -10,9 +11,9 @@ namespace aqaframework.POM
         protected WebDriver driver;
         private WebDriverWait _wait;
 
-        public CorePOM(WebDriver driver)
+        public CorePOM(DriverManager driverManager)
         {
-            this.driver = driver;
+            driver = driverManager.GetDriver();
             _wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30.0));
         }
         /// <summary>

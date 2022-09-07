@@ -16,7 +16,7 @@ namespace aqaframework.Helpers
             for (int i = 0; i < length; i++)
             {
                 int rnd = random.Next(25);
-                ch = Convert.ToChar(rnd + 65);
+                ch = Convert.ToChar(rnd + 97);
                 sb.Append(ch);
             }
 
