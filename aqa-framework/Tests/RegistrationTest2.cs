@@ -7,7 +7,7 @@ namespace aqaframework.Tests
 {
     [TestFixture]
     [Parallelizable(ParallelScope.Fixtures)]
-    public class RegistrationTest: CoreTest
+    public class RegistrationTest2: CoreTest
     {
         UserRegistration userRegistration = new();
 

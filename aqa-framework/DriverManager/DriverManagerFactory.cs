@@ -1,36 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Threading;
-using OpenQA.Selenium;
 
 namespace aqaframework.Drivers;
 
 public class DriverManagerFactory
 {
-    private static DriverManagerFactory instance;
-    private static Object syncRoot = new();
     private List<DriverManager> driverManagers = new ();
 
-    private DriverManagerFactory() {}
-
-    public static DriverManagerFactory Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                lock (syncRoot)
-                {
-                    if (instance == null)
-                    {
-                        instance = new DriverManagerFactory();
-                    }
-                }
-            }
-            return instance;
-        }
-    }
-    
     public DriverManager GetDriverManager(BrowserType browserType)
     {
         DriverManager driverManager;
