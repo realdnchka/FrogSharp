@@ -7,12 +7,13 @@ namespace aqaframework.Tests
     public class CoreTest
     {
         protected DriverManager driverManager;
+        private DriverManagerFactory driverManagerFactory = new();
 
-        protected DriverManager InitDriverManager()
+        private DriverManager InitDriverManager()
         {
-            return DriverManagerFactory.Instance.GetDriverManager(Configuration.Instance.browserType);
+            return driverManagerFactory.GetDriverManager(Configuration.Instance.browserType);
         }
-        
+
         [SetUp]
         public void SetUp()
         {
@@ -22,13 +23,13 @@ namespace aqaframework.Tests
         [TearDown]
         public void TearDown()
         {
-            // driverManager.CloseDriver();
+            driverManager.CloseDriver();
         }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            DriverManagerFactory.Instance.CloseAllDrivers();
+            driverManagerFactory.CloseAllDrivers();
         }
     }
 }
