@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using aqaframework.Drivers;
+using aqaframework.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -8,6 +9,7 @@ namespace aqaframework.POM
 {
     public abstract class CorePOM
     {
+        private LoggerHelper logger = LoggerHelper.Instance;
         protected WebDriver driver;
         private WebDriverWait _wait;
 
@@ -53,6 +55,7 @@ namespace aqaframework.POM
 
         protected void Click(By selector)
         {
+            logger.WriteInfoMessage($"Click by {selector}");
             WaitForElementExist(selector);
             driver.FindElement(selector).Click();
         }

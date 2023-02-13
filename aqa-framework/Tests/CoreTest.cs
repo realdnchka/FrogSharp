@@ -25,11 +25,5 @@ namespace aqaframework.Tests
         {
             driverManager.CloseDriver();
         }
-
-        [OneTimeTearDown]
-        public void OneTimeTearDown()
-        {
-            driverManagerFactory.CloseAllDrivers();
-        }
     }
 }

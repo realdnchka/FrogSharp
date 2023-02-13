@@ -5,8 +5,6 @@ namespace aqaframework.POM
 {
     public class RegistrationPOM: CorePOM
     {
-        private WebDriver driver;
-
         public RegistrationPOM(DriverManager driverManager) : base(driverManager) { }
 
         #region selectors
