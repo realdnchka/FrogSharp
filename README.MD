@@ -5,10 +5,10 @@
 - RestSharp
 - NUnit
 - NLog
-- .NET Framework 7.0
+- .NET Framework 6.0
 
 ### Requirements:
-- .NET Framework 7.0
+- .NET Framework 6.0
 
 ### Features:
 - Logger
