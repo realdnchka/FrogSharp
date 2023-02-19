@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace aqaframework.Drivers;
+namespace FrogSharp.Drivers;
 
 public class DriverManagerFactory
 {

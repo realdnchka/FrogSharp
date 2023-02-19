@@ -1,7 +1,7 @@
 ﻿using System;
 using RestSharp;
 
-namespace aqaframework.Helpers
+namespace FrogSharp.Helpers
 {
     public class ApiHelper
     {

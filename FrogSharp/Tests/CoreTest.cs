@@ -1,7 +1,7 @@
-using aqaframework.Drivers;
+using FrogSharp.Drivers;
 using NUnit.Framework;
 
-namespace aqaframework.Tests
+namespace FrogSharp.Tests
 {
     [TestFixture]
     public class CoreTest

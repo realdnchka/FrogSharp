@@ -1,6 +1,6 @@
 using OpenQA.Selenium.Firefox;
 
-namespace aqaframework.Drivers;
+namespace FrogSharp.Drivers;
 
 public class FirefoxDriverManager: DriverManager
 {

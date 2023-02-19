@@ -1,7 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
-namespace aqaframework.Drivers;
+namespace FrogSharp.Drivers;
 
 public class ChromeDriverManager: DriverManager
 {

@@ -1,8 +1,8 @@
 ﻿using System;
-using aqaframework.Drivers;
+using FrogSharp.Drivers;
 using NUnit.Framework;
 
-namespace aqaframework;
+namespace FrogSharp;
 public class Configuration
     {
         public string url = TestContext.Parameters["url"];

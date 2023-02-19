@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using aqaframework.Drivers;
+using FrogSharp.Drivers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace aqaframework.POM
+namespace FrogSharp.POM
 {
     public abstract class CorePOM
     {

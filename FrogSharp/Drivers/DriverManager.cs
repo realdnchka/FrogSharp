@@ -1,6 +1,6 @@
 using OpenQA.Selenium;
 
-namespace aqaframework.Drivers;
+namespace FrogSharp.Drivers;
 
 public abstract class DriverManager
 {
